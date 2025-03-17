@@ -20,10 +20,6 @@ This pattern implements most aspects of the architecture explained in blog post 
 - Pods and services can be exposed internally and externally using Load Balancers (ex: service NLB and ingress ALB).
 - Clients running outside the cluster VPC (ex: security tools) can connect to the cluster Kubernetes API, but won't be able to directly connect to worker nodes IP. Consider using daemons running on the nodes (ex: DaemonSet) that report to external tools.
 
-Additional Steps Required
----
-To enable connectivity to on-prem networks and connected VPCs, create a TGW/VGW and create a route associated with VPC private subnets pointing to this TGW/VGW to route private traffic.
-
 Deploy
 ---
 Apply terraform files:
@@ -32,9 +28,20 @@ Apply terraform files:
 terraform apply
 ```
 
+Test
+---
+To enable connectivity to on-prem networks and connected VPCs, create a TGW/VGW and create a route associated with VPC private subnets pointing to this TGW/VGW to route private traffic.
+
+You can deploy the sample application included in this pattern to check node and pod provisioning, and access to services:
+
+```bash
+kubectl create ns sample-app 
+kubectl apply -n sample-app -f sample-app.yaml
+```
+
 Clean up
 ---
-First, remove the sample app and/or any other application that you deployed ot the cluster:
+First, remove the sample app and/or any other application that you deployed to the cluster:
 
 ```bash
 kubectl delete -n sample-app -f sample-app.yaml
