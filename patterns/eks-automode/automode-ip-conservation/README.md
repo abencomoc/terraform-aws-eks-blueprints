@@ -3,7 +3,7 @@ EKS Auto Mode using non-routable IP range
 
 This pattern shows how to run an EKS Auto Mode cluster with worker nodes and pods running in a non-routable IP range.
 
-[](./images/architecture.png)
+<img src="./images/architecture.png" width=100%>
 
 Using a non-routable IP range for worker nodes and pods is useful to overcome IP exhaustion in environments where private IP addresses (RFC 1918) are scarce.
 
