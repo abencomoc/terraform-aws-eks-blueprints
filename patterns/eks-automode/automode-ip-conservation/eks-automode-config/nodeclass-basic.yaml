@@ -1,16 +1,16 @@
 apiVersion: eks.amazonaws.com/v1
 kind: NodeClass
 metadata:
-  name: simple
+  name: basic
 spec:
   # Use role name here
   role: "${node_iam_role_name}"
   subnetSelectorTerms:
     - tags:
-        EksAutoModeCustomNodes: "true"
+        Name: "${subnet_prefix}"
   securityGroupSelectorTerms:
     - tags:
-        Name: ${cluster_name}-node
+        Name: "${sg_name}"
   ephemeralStorage:
     size: "80Gi"    # Range: 1-9000Gi or 1-64000G or 1-58Ti or 1-64T
     iops: 3000      # Range: 3000-16000

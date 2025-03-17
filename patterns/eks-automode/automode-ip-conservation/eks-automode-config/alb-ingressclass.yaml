@@ -9,3 +9,7 @@ metadata:
 spec:
   # Configures the IngressClass to use EKS Auto Mode
   controller: eks.amazonaws.com/alb
+  parameters:
+    apiGroup: eks.amazonaws.com
+    kind: IngressClassParams
+    name: alb
